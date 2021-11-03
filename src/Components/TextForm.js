@@ -26,8 +26,8 @@ export default function TextForm(props) {
 
   const handleEmailClick = () => {
     let newText = text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi)+" ";;
-    console.log(newText);
-    setEmail(newText);
+    //console.log(newText);
+    setEmail(newText.toLowerCase());
   };
 
   const [email, setEmail] = useState("");
@@ -36,13 +36,14 @@ export default function TextForm(props) {
   //setText("new text"); // correct way to change the state
   return (
     <>
-    <div>
+    <div style={{color: props.mode === 'dark'?'white':'black'}}>
       <h1>{props.heading}</h1>
       <div className="mb-3">
         <textarea
           className="form-control"
           value={text}
           onChange={handleOnChange}
+          style={{backgroundColor: props.mode === 'light'?'white':'grey', color:props.mode ==='dark'?'white':'black'}}
           id="myBox"
           rows="8"
         ></textarea>
@@ -61,12 +62,12 @@ export default function TextForm(props) {
       </button>
     </div>
 
-    <div className="container my-3">
+    <div className="container my-3" style={{color: props.mode === 'dark'?'white':'black'}}>
         <h2>Your text summary</h2>
         <p>{text.split(" ").length-1} words and {text.length} characters</p>
-        <p>Minimum time reqquired to read the text :- {0.008 * (text.split(" ").length-1)} Minutes</p>
+        <p>Minimum time required to read the text :- {0.008 * (text.split(" ").length-1)} Minutes</p>
         <h2>Preview</h2>
-        <p>{text}</p>
+        <p>{text.length>0?text:'Enter sommething in the  textbox above to preview it'}</p>
         <h2>Emails Found</h2>
         <p>{email}</p>
     </div>
