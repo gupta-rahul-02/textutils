@@ -2,19 +2,16 @@ import React, { useState } from "react";
 
 export default function TextForm(props) {
   const handleUpClick = () => {
-    // console.log("Uppercase was clicked" +text);
     let newText = text.toUpperCase();
     setText(newText);
     props.showAlert("Converted to upper case","success");
   };
 
   const handleOnChange = (event) => {
-    // console.log("On change");
     setText(event.target.value);
   };
 
   const handleLowClick = () => {
-    //console.log("Lower Case was clicked" + text);
     let newText = text.toLowerCase();
     setText(newText);
     props.showAlert("Converted to lower case","success");
@@ -29,7 +26,6 @@ export default function TextForm(props) {
 
   const handleEmailClick = () => {
     let newText = text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi)+" ";;
-    //console.log(newText);
     setEmail(newText.toLowerCase());
     props.showAlert("Emails are extracted from text","success");
   };
@@ -56,7 +52,7 @@ export default function TextForm(props) {
         Convert to Uppercase
       </button>
       <button className="btn btn-primary mx-2" onClick={handleLowClick}>
-        Convet to Lowercase
+        Convert to Lowercase
       </button>
       <button className="btn btn-primary mx-2" onClick={handleClearClick}>
         Clear Text
